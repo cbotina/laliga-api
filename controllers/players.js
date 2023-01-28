@@ -1,23 +1,40 @@
-const getAllPlayers = (req,res)=>{
-    console.log('getAllPlayers')
+const Player = require('../models/players')
+
+const getAllPlayers = async (req,res)=>{
+    const players = await Player.find()
+    res.json(players)
 }
 
 const getPlayer = (req,res)=> {
-    console.log('getPlayer')
+    const id = req.params.id
+    res.json({playerID: id})
 }
 
 const getPlayersByClub = (req,res)=> {
-    console.log('getPlayersByClub')
+    const club = req.params.club
+    res.json({club})
 }
 
-const createPlayer = (req,res)=> {
-    console.log('createPlayer')
+const createPlayer = async (req,res)=> {
+    const player = await Player.create(req.body)
+    res.status(201).json({player})
 }
 
 const updatePlayer = (req,res) => {
-    console.log('updatePlayer')
+    const playerInfo = req.body
+    res.json(playerInfo)
 }
 
 const deletePlayer = (req,res)=> {
-    console.log('deletePlayer')
+    const id = req.params.id
+    res.json(id)
+}
+
+module.exports = {
+    getAllPlayers,
+    getPlayer,
+    getPlayersByClub,
+    createPlayer,
+    updatePlayer,
+    deletePlayer
 }
