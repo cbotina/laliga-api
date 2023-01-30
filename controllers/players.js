@@ -5,14 +5,16 @@ const getAllPlayers = async (req,res)=>{
     res.json(players)
 }
 
-const getPlayer = (req,res)=> {
+const getPlayer = async (req,res)=> {
     const id = req.params.id
-    res.json({playerID: id})
+    const player =  await Player.findById(id).exec()
+    res.json({player})
 }
 
-const getPlayersByClub = (req,res)=> {
+const getPlayersByClub = async (req,res)=> {
     const club = req.params.club
-    res.json({club})
+    const players = await Player.find({club})
+    res.send(players)
 }
 
 const createPlayer = async (req,res)=> {
@@ -20,14 +22,23 @@ const createPlayer = async (req,res)=> {
     res.status(201).json({player})
 }
 
-const updatePlayer = (req,res) => {
+const updatePlayer = async (req,res) => {
+    const playerID = req.params.id
     const playerInfo = req.body
-    res.json(playerInfo)
+    const updatedPlayer = await Player.findOneAndUpdate({_id: playerID},playerInfo, {
+        new: true, 
+        runValidators: true
+    })
+    res.json(updatedPlayer)
 }
 
-const deletePlayer = (req,res)=> {
+const deletePlayer = async (req,res)=> {
     const id = req.params.id
-    res.json(id)
+    const deletedPlayer = await Player.findOneAndDelete({_id: id})
+    if(!deletePlayer){
+        res.status(404).end(`There's no players with id: ${id}`)
+    }
+    res.status(200).json({deletedPlayer})
 }
 
 module.exports = {

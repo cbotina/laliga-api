@@ -9,15 +9,13 @@ app.use(express.json())
 app.use('/api/v1/players',PlayersRouter)
 
 
-app.route('/').get((req,res)=>res.end("Hello World"))
-
 
 // app.listen(PORT, ()=>console.log('Server is listening'))
 
 async function start () {
     try{    
         await connectDB(process.env.MONGODB_URI).then(()=>console.log('DB Connection stablished'))
-        app.listen(PORT, ()=>console.log(`Server is listening on http://localhost:{PORT}`))
+        app.listen(PORT, ()=>console.log(`Server is listening on http://localhost:${PORT}`))
     }catch(error) {
         console.error(error)
     }
