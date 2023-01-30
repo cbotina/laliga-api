@@ -5,11 +5,13 @@ const connectDB = require('./db/connect')
 const errorHandler = require('./middleware/error-handler')
 const PORT = process.env.PORT || 8000
 const notFound = require('./middleware/not-found')
+const ClubsRouter = require('./routes/clubs')
 
 require('dotenv').config()
 
 app.use(express.json())
 app.use('/api/v1/players',PlayersRouter)
+app.use('/api/v1/clubs', ClubsRouter)
 
 
 app.use(notFound)
