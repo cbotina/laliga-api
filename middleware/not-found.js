@@ -1,5 +1,5 @@
-const notFound = (req,res)=> {
-    res.status(404).end('Route does not exists')
-}
+const notFound = (req, res) => {
+  res.status(404).end("Route does not exists");
+};
 
-module.exports = notFound
+module.exports = notFound;

@@ -11,24 +11,23 @@ A RESTful API for Laliga players and clubs information built with Node.js.
 
 1. Clone the repository to your local machine:
 
-    $ git clone https://github.com/<repository-name>.git
+   $ git clone https://github.com/<repository-name>.git
 
 2. Install dependencies using npm:
 
-    $ npm install
+   $ npm install
 
 3. Set environment variables in .env file:
 
-    $ PORT=<port_number>
+   $ PORT=<port_number>
 
 4. Start the server:
 
-    $ npm start
+   $ npm start
 
 ## API Endpoints
 
 - `GET /api/v1/players` - retrieve all players information
-
 
 ## Contributions
 
@@ -36,4 +35,4 @@ All contributions are welcome. Please feel free to submit a pull request.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) 
+This project is licensed under the MIT License - see the [LICENSE](LICENSE)
